@@ -14,6 +14,20 @@ The Robot-ASR model is intended to be deployed on Trinity Robotics' Storm robot 
 
 However, this model is not limited to operations on Storm and can be deployed on any device that supports the necessary requirements. The model can also be quantized to reduce the file size and better suit operations on edge or mobile devices with limited storage space.
 
+## How to use it?
+
+1.  First run the setup.py file to download the ASR model
+2.  Use audio-recording.py to record a audio file for sampling
+3.  To feed the file into the machine learning model for evaluation - a process known as inference, run inference.py
+
+Quantization (Optional)
+
+Neural Networks on a high level, are networks with a large number of layers. Each layer contain a certain number of nodes which often uses floating point numbers to retain information. However, neural nets can be quite large and take up significant space to store which is a problem for edge devices - like single board computers, which are commonly used in robotics. 
+
+Thus, the method of quantization can be utilized, which essentially converts a model's weights from floating point - 32 bit, to integers - 8 bit, effectively reducing the size of the model. Note that as weights lose resolution, performance of the quantized models may be somewhat decreased. 
+
+4. Use model-quantization.py to decrease
+
 ## Performance
 
 When evaluating the performance of this ASR model, the Robot ASR base and quantized variations were tested against the non-finetuned Wav2Vec2 base model. All three models were evaluated using a Timit test set of 1680 audio samples with Word Error Rate (WER) being used evaluate each model's accuracy. 
